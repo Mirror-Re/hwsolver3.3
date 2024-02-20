@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Area of a Rectangle</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <h3>Area of a Rectangle</h3>
+        <div class="row">
+            <div>
+                <label for="w">Width</label>
+                <input type="text" id="w" name="w" style="width: 100px;">
+            </div>
+            <div>
+                <label for="l">Length</label>
+                <input type="text" id="l" name="l" style="width: 100px;">
+            </div>
+        </div>
+        <button id="calc">Calculate</button>
+        <button id="clear">Clear</button>
+        <p></p>
+    </div>
+</div>
+<script>
+    const w = document.getElementById('w');
+    const l = document.getElementById('l');
+    const ans = document.querySelector('p');
+    const calculateButton = document.getElementById('calc');
+    const clearButton = document.getElementById('clear');
+
+    clearButton.addEventListener('click', function(e){
+        w.value = " ";
+        l.value = " ";
+        ans.textContent = " ";
+    })
+
+    calculateButton.addEventListener('click', function(e){
+        let WidthW = +w.value;
+        let LengthL = +l.value;
+
+        if (!checkIsValid(WidthW) || !checkIsValid(LengthL)){
+            ans.textContent = `Invalid inputs`;
+            return;
+        }
+        ans.textContent = `The area of the rectangle is ${AreaofRect(WidthW, LengthL)}`;
+    })
+
+    function AreaofRect(num1, num2) {
+        return num1 * num2;
+
+    }
+
+    function checkIsValid(num){
+        if(isNaN(num)){
+            return false
+        }
+        if (num <= 0){
+            return false
+        }
+        return true
+    }
+</script>
+</body>
+</html>
